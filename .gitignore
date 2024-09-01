@@ -1,0 +1,37 @@
+# Entornos virtuales
+venv/
+.env
+
+# Archivos y directorios de Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pyd
+
+# Archivos de configuración del entorno
+*.env
+*.local
+*.log
+*.sqlite3
+*.db
+
+# Directorios de configuración de IDEs
+.idea/
+.vscode/
+
+# Archivos de configuración de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de depuración
+*.bak
+*.swp
+
+# Archivos de configuración de Git
+.git/
+
+
+
+# Entorno de producción
+instance/

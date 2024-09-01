@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D0D0D0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #2C2F35;
+            padding: 30px;
+            text-align: center;
+            border-radius: 25px;
+            color: #FFFFFF;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: white;
+            background-color: #04BD7D;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 1px 2px 4px rgba(0,0,0,.5);
+
+        }
+        a:hover {
+            background-color: #038d62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Gracias por participar en la encuesta!</h1>
+        <p>Su respuesta ha sido enviada exitosamente.</p>
+        <a href="{{ url_for('index') }}">Volver a la página principal</a>
+        <a href="{{ url_for('graficas') }}">Ver resultados globales</a>
+        {% if email %}
+            <a href="{{ url_for('resultados', email=email) }}">Ver resultados</a>
+        {% endif %}
+    </div>
+</body>
+</html>

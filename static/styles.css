@@ -1,0 +1,114 @@
+/* Estilos generales */
+
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; 
+    background-image: url('./img/celo.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; 
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;  
+}*/
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Ajuste de opacidad */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Ajuste de sombra */
+    color: #ffffff; 
+    margin-top: 20px; 
+}
+
+/* Encabezado */
+header {
+    background: rgba(0, 0, 0, 0.85); 
+    color: #ffffff; 
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ajuste de sombra */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Ajuste de sombra de texto */
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #ffffff; 
+}
+
+input[type="text"], input[type="email"], textarea, select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444; 
+    border-radius: 6px;
+    width: 100%;
+    background: rgb(19, 19, 18); 
+    color: #ffffff; /* letra en si*/
+}
+
+/* Botón con estilo .shadow__btn */
+input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    font-size: 17px;
+    color: #000000;
+    border-radius: 7px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(36, 29, 29, 0.1);
+    transition: 0.5s;
+    transition-property: box-shadow, transform; /* Asegura que la transición se aplique a ambos elementos */
+    cursor: pointer; /* Agrega un cursor pointer para mejor interacción */
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 0 5px rgb(57, 62, 66),
+                0 0 25px rgb(57, 62, 66),
+                0 0 50px rgb(57, 62, 66),
+                0 0 100px rgb(57, 62, 66);
+    transform: translateY(-3px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Ajuste de sombra */
+}
+
+/* Enlaces */
+a {
+    color: #ffffff; 
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #cccccc; 
+}

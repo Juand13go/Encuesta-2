@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Encuesta de Satisfacción</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #D0D0D0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #2C2F35;
+            padding: 50px 60px 70px;
+            text-align: center;
+            border-radius: 25px;
+        }
+
+        .container h1 {
+            font-size: 30px;
+            margin-bottom: 60px;
+            color: #FFFFFF;
+            position: relative;
+        }
+
+        .container h1::after {
+            content: '';
+            width: 85px;
+            height: 4px;
+            border-radius: 3px;
+            background: #04BD7D;
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .input-field {
+            background-color: #515966;
+            margin: 15px 0;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-field i {
+            margin-left: 15px;
+            color: #04BD7D;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            outline: none;
+            padding: 18px 15px;
+            color: #FFFFFF;
+        }
+
+        input::placeholder, select::placeholder, textarea::placeholder {
+            color: #FFFFFF;
+        }
+
+        label {
+            color: #FFFFFF;
+            text-align: left;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .emoji-bounce {
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        input[type="submit"] {
+            background-color: #04BD7D;
+            color: white;
+            border: none;
+            cursor: pointer;
+            height: 50px;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+            width: 40%;
+            box-shadow: 1px 2px 4px rgba(0,0,0,.5);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #038d62;
+        }
+        
+        .negro{
+            background-color: #515966;
+        }
+
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const optionsData = {
+                experiencia_general: [
+                    { text: "Excelente", emoji: "😊" },
+                    { text: "Buena", emoji: "🙂" },
+                    { text: "Regular", emoji: "😐" },
+                    { text: "Mala", emoji: "😟" }
+                ],
+                satisfaccion_atencion: [
+                    { text: "Muy satisfecho", emoji: "😁" },
+                    { text: "Satisfecho", emoji: "🙂" },
+                    { text: "Insatisfecho", emoji: "😞" },
+                    { text: "Muy insatisfecho", emoji: "😠" }
+                ],
+                calidad_precio: [
+                    { text: "Totalmente de acuerdo", emoji: "👍" },
+                    { text: "De acuerdo", emoji: "👌" },
+                    { text: "En desacuerdo", emoji: "👎" },
+                    { text: "Totalmente en desacuerdo", emoji: "🙅" }
+                ],
+                recomendacion: [
+                    { text: "Definitivamente sí", emoji: "✅" },
+                    { text: "Probablemente sí", emoji: "🟢" },
+                    { text: "Probablemente no", emoji: "🟡" },
+                    { text: "Definitivamente no", emoji: "❌" }
+                ]
+            };
+
+            for (const [selectId, options] of Object.entries(optionsData)) {
+                const selectElement = document.getElementById(selectId);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.text;
+                    optionElement.textContent = `${option.emoji} ${option.text}`;
+                    selectElement.appendChild(optionElement);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Encuesta de Satisfacción</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li style="color: red;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('submit') }}" method="post">
+            <div class="input-field">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="name" name="name" placeholder="Nombre" required>
+            </div>
+
+            <div class="input-field">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+            </div>
+
+            <label for="experiencia_general">
+                <span class="emoji-bounce">😊</span> 
+                Califique su experiencia general con nuestro servicio.
+            </label>
+            <div class="input-field">
+                <select class="negro" id="experiencia_general" name="experiencia_general" required>
+                    <option value="" disabled selected>Seleccione una respuesta</option>
+                </select>
+            </div>
+
+            <label for="satisfaccion_atencion">
+                <span class="emoji-bounce">😁</span> 
+                ¿Qué tan satisfecho se siente con la atención recibida?
+            </label>
+            <div class="input-field">
+                <select class="negro" id="satisfaccion_atencion" name="satisfaccion_atencion" required>
+                    <option value="" disabled selected>Seleccione una respuesta</option>
+                </select>
+            </div>
+
+            <label for="calidad_precio">
+                <span class="emoji-bounce">👍</span> 
+                ¿Considera que la relación calidad-precio es adecuada?
+            </label>
+            <div class="input-field">
+                <select class="negro" id="calidad_precio" name="calidad_precio" required>
+                    <option value="" disabled selected>Seleccione una respuesta</option>
+                </select>
+            </div>
+
+            <label for="recomendacion">
+                <span class="emoji-bounce">✅</span> 
+                ¿Recomendaría nuestro servicio/producto a otras personas?
+            </label>
+            <div class="input-field">
+                <select class="negro" id="recomendacion" name="recomendacion" required>
+                    <option value="" disabled selected>Seleccione una respuesta</option>
+                </select>
+            </div>
+
+            <label for="comentarios">¿Qué aspectos considera que podríamos mejorar?</label>
+            <div class="input-field">
+                <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios aquí..."></textarea>
+            </div>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
+
+
+
